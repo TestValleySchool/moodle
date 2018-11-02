@@ -2189,7 +2189,8 @@ function calendar_view_event_allowed(calendar_event $event) {
         if (!$cm->uservisible) {
             return false;
         }
-        $mycourses = enrol_get_my_courses('id');
+        $mycourses = enrol_get_my_courses('id', null, 0, [], true);
+        
         return isset($mycourses[$courseid]);
     } else if ($event->categoryid) {
         // If this is a category we need to be able to see the category.
@@ -2203,7 +2204,7 @@ function calendar_view_event_allowed(calendar_event $event) {
         if (has_capability('moodle/calendar:manageentries', $event->context)) {
             return true;
         }
-        $mycourses = enrol_get_my_courses('id');
+        $mycourses = enrol_get_my_courses('id', null, 0, [], true);
         return isset($mycourses[$event->courseid]);
     } else if ($event->userid) {
         if ($event->userid != $USER->id) {

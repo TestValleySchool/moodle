@@ -75,7 +75,7 @@ class mod_label_external extends external_api {
 
         $mycourses = array();
         if (empty($params['courseids'])) {
-            $mycourses = enrol_get_my_courses();
+            $mycourses = enrol_get_my_courses(null, null, 0, [], true);
             $params['courseids'] = array_keys($mycourses);
         }
 

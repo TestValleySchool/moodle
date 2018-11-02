@@ -665,7 +665,7 @@ class mod_scorm_external extends external_api {
 
         $courses = array();
         if (empty($params['courseids'])) {
-            $courses = enrol_get_my_courses();
+            $courses = enrol_get_my_courses(null, null, 0, [], true);
             $params['courseids'] = array_keys($courses);
         }
 

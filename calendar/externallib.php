@@ -519,11 +519,12 @@ class core_calendar_external extends external_api {
             $params['aftereventid'] = null;
         }
 
-        $courses = enrol_get_my_courses('*', null, 0, [$courseid]);
+        $courses = enrol_get_my_courses('*', null, 0, [$courseid], true);
         $courses = array_values($courses);
+              
 
         if (empty($courses)) {
-            return [];
+            return [];    
         }
 
         $course = $courses[0];
@@ -604,7 +605,7 @@ class core_calendar_external extends external_api {
         }
 
         $renderer = $PAGE->get_renderer('core_calendar');
-        $courses = enrol_get_my_courses('*', null, 0, $params['courseids']);
+        $courses = enrol_get_my_courses('*', null, 0, $params['courseids'], true);
         $courses = array_values($courses);
 
         if (empty($courses)) {

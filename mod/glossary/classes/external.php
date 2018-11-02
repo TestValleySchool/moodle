@@ -200,7 +200,7 @@ class mod_glossary_external extends external_api {
         $courseids = $params['courseids'];
 
         if (empty($courseids)) {
-            $courses = enrol_get_my_courses();
+            $courses = enrol_get_my_courses(null, null, 0, [], true);
             $courseids = array_keys($courses);
         }
 
